@@ -1,4 +1,22 @@
 from django.db import models
+import datetime
+import django
+
+
+def get_duration(visit):
+    entered_at_time = django.utils.timezone.localtime(visit.entered_at)
+    leaved_at_time = django.utils.timezone.localtime(visit.leaved_at)
+    current_time = django.utils.timezone.localtime()
+
+    if visit.leaved_at is None:
+        delta_time = current_time - entered_at_time
+    else:
+        delta_time = leaved_at_time - entered_at_time
+    return delta_time.total_seconds()
+
+
+def get_format_duration(duration):
+    return str(datetime.timedelta(seconds=duration))
 
 
 class Passcard(models.Model):
