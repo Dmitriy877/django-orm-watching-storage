@@ -12,11 +12,21 @@ def get_duration(visit):
         delta_time = current_time - entered_at_time
     else:
         delta_time = leaved_at_time - entered_at_time
-    return delta_time.total_seconds()
+    return round(delta_time.total_seconds())
 
 
 def get_format_duration(duration):
     return str(datetime.timedelta(seconds=duration))
+
+
+def is_visit_long(visit, minutes=60):
+    suspect_time_seconds = minutes * 60
+    visit_duration = get_duration(visit)
+
+    if visit_duration < suspect_time_seconds:
+        return False
+    else:
+        return True
 
 
 class Passcard(models.Model):
