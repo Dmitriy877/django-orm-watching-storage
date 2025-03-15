@@ -1,8 +1,8 @@
 from datacenter.models import Passcard
 from datacenter.models import Visit
 from django.shortcuts import render
-from .models import get_duration
-from .models import get_format_duration
+from .support_functions import get_duration
+from .support_functions import get_format_duration
 
 
 def storage_information_view(request):
@@ -10,11 +10,10 @@ def storage_information_view(request):
     visits_active = Visit.objects.filter(leaved_at=None)
 
     for visit in visits_active:
-        owner = Passcard.objects.filter(owner_name=visit.passcard)[0]
         duration = get_format_duration(get_duration(visit))
 
         non_closed_visit = {
-            'who_entered': owner.owner_name,
+            'who_entered': visit.passcard,
             'entered_at': visit.entered_at,
             'duration': duration,
         }
