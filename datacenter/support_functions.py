@@ -11,11 +11,15 @@ def get_duration(visit):
         delta_time = current_time - entered_at_time
     else:
         delta_time = leaved_at_time - entered_at_time
+        
     return round(delta_time.total_seconds())
 
 
 def get_format_duration(duration):
-    return str(datetime.timedelta(seconds=duration))
+    hours, remains = divmod(duration, 3600)
+    minutes, seconds = divmod(remains, 60)
+    
+    return f"{hours}:{minutes}:{seconds}"
 
 
 def is_visit_long(visit, minutes=60):
