@@ -19,7 +19,7 @@ def get_format_duration(duration):
     hours, remains = divmod(duration, 3600)
     minutes, seconds = divmod(remains, 60)
     
-    return f"{hours}:{minutes}:{seconds}"
+    return f"{hours} часов, {minutes} минут, {seconds} секунд"
 
 
 def is_visit_long(visit, minutes=60):
