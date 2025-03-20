@@ -3,6 +3,8 @@ from dotenv import load_dotenv
 from environs import env
 load_dotenv()
 
+HOST_NAME = env("HOST")
+PORT_NAME = env("PORT")
 DATABASE_NAME = env("NAME")
 DATABASE_USER = env("USER")
 DATABASE_PASSWORD = env("PASSWORD")
@@ -12,8 +14,8 @@ DEBUG = env.bool("DEBUG", False)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': 'checkpoint.devman.org',
-        'PORT': '5434',
+        'HOST': HOST_NAME,
+        'PORT': PORT_NAME,
         'NAME': DATABASE_NAME,
         'USER': DATABASE_USER,
         'PASSWORD': DATABASE_PASSWORD,
