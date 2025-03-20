@@ -9,9 +9,6 @@ DATABASE_PASSWORD = env("PASSWORD")
 DATABASE_SECRET_KEY = env("SECRET_KEY")
 DEBUG = env.bool("DEBUG", False)
 
-print(DEBUG)
-print(type(DEBUG))
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -30,7 +27,6 @@ SECRET_KEY = DATABASE_SECRET_KEY
 ROOT_URLCONF = 'project.urls'
 
 ALLOWED_HOSTS = ['*']
-
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATES = [
