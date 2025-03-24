@@ -1,7 +1,6 @@
 import os
-from dotenv import load_dotenv
 from environs import env
-load_dotenv()
+env.read_env()
 
 HOST_NAME = env("HOST")
 PORT_NAME = env("PORT")
